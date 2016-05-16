@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">ParcelStatus</string>
+
+    <string name="list">Список посылок</string>
+    <string name="search">Отследить посылку</string>
+
+
+    <string name="drawer_open">Slider Menu Opened</string>
+    <string name="drawer_close">Slider Menu Closed</string>
+
+    <string name="no_internet_connection">Нет соединения</string>
+    <string name="input_track_number">Введите номер отслеживания</string>
+
+    <string name="button_action">Поиск</string>
+    <string name="editText_hint">Номер отслеживания</string>
+
+
+    <!--notification-->
+    <string name="progress_contentTitle">Поиск информации</string>
+    <string name="progress_contentText">поиск</string>
+    <string name="progress_ticker">Progress notification created</string>
+
+    <string name="done_contentTitle">Готово</string>
+    <string name="done_contentText">Поиск завершен</string>
+    <string name="done_ticker">Done notification created</string>
+
+
+</resources>

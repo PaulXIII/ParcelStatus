@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+
+android {
+    signingConfigs {
+        keyAndroid {
+            keyAlias 'Paul'
+            keyPassword 'z4294967296'
+            storeFile file('D:/Android/keyAndroid.jks')
+            storePassword 'z4294967296'
+        }
+    }
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+    defaultConfig {
+        applicationId 'paul.by.parcelstatus'
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+    }
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.realm:realm-gradle-plugin:0.89.0"
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    //support library for components
+    compile 'com.android.support:appcompat-v7:23.2.0'
+    //library for create card view
+    compile 'com.android.support:cardview-v7:23.0.0'
+    //library for create recycler view
+    compile 'com.android.support:recyclerview-v7:23.0.0'
+    //support library for view
+    compile 'com.android.support:design:23.2.0'
+    //library for work with server, create and sent requests, work with responses
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    compile 'com.squareup.okhttp:okhttp:2.2.0'
+    //library for create data base
+//    compile 'io.realm:realm-android:0.88.2'
+//    classpath "io.realm:realm-gradle-plugin:0.89.0"
+    //library for sending responses in UI
+    compile 'org.greenrobot:eventbus:3.0.0'
+}
+
+

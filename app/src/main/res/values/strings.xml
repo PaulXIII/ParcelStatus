@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">ParcelStatus</string>
+
+    <string name="list">List</string>
+    <string name="search">Search parcel</string>
+
+
+    <string name="drawer_open">Slider Menu Opened</string>
+    <string name="drawer_close">Slider Menu Closed</string>
+
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="input_track_number">Input track number, please</string>
+
+
+    <string name="button_action">Search</string>
+    <string name="editText_hint">Track number</string>
+
+
+    <!--notification-->
+    <string name="progress_contentTitle">Progress searching</string>
+    <string name="progress_contentText">searching</string>
+    <string name="progress_ticker">Progress notification created</string>
+
+    <string name="done_contentTitle">Done</string>
+    <string name="done_contentText">Searching is done</string>
+    <string name="done_ticker">Done notification created</string>
+
+
+</resources>
