@@ -15,9 +15,9 @@ public class ManagerResult extends RealmObject {
 
     @PrimaryKey
     private String trackNumber;
+    private String title;
 
     private RealmList<StatusTracking> list;
-
 
 
     public String getTrackNumber() {
@@ -37,20 +37,11 @@ public class ManagerResult extends RealmObject {
 
     }
 
+    public String getTitle() {
+        return title;
+    }
 
-
-
-
-
-
-    public static final String TAG = "TAG";
-
-//    @Subscribe
-//    public void resultList(RealmResults<StatusTracking> query)
-//    {
-//        Log.d(TAG, "resultList");
-//
-//    }
-
-
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }

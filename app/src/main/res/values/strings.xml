@@ -25,5 +25,15 @@
     <string name="done_contentText">Searching is done</string>
     <string name="done_ticker">Done notification created</string>
 
+    <!--dialog-->
+    <string name="add_trackNumber_dialog_title">Add parcel</string>
+    <string name="add_trackNumber_dialog_message">Input track number</string>
+    <string name="add_trackNumber_dialog_title_hint">Enter title of track number</string>
+    <string name="add_trackNumber_dialog_trackNumber_hint">Enter track number</string>
+
+
+    <string name="add_trackNumber_dialog_done">Add</string>
+    <string name="add_trackNumber_dialog_cancel">Cancel</string>
+
 
 </resources>

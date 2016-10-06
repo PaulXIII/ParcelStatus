@@ -131,7 +131,7 @@ public class TrackingParselFragment extends Fragment {
         String trackNumber = messageTrackNumber.trackNumber;
         Log.d("TAG", "resultList+1");
 
-        Realm realm = Realm.getInstance(getActivity());
+        Realm realm = realm = Realm.getDefaultInstance();
 
         RealmResults<ManagerResult> query = realm.where(ManagerResult.class)
                 .equalTo("trackNumber", trackNumber)
@@ -189,7 +189,7 @@ public class TrackingParselFragment extends Fragment {
     }
 
     private void loadParcelInfo(String tr) {
-        Realm realm = Realm.getInstance(getActivity());
+        Realm realm = Realm.getDefaultInstance();
 
         RealmResults<ManagerResult> query = realm.where(ManagerResult.class)
                 .equalTo("trackNumber", tr)

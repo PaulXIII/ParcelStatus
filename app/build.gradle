@@ -1,6 +1,25 @@
 apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 
+
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        // The Fabric Gradle plugin uses an open ended version to react
+        // quickly to Android tooling updates
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
 android {
     signingConfigs {
         keyAndroid {
@@ -58,6 +77,10 @@ dependencies {
 //    classpath "io.realm:realm-gradle-plugin:0.89.0"
     //library for sending responses in UI
     compile 'org.greenrobot:eventbus:3.0.0'
+
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.2@aar') {
+        transitive = true;
+    }
 }
 
 

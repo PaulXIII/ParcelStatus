@@ -1,5 +1,6 @@
 package paul.by.finalproject2.ui.activity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -8,11 +9,19 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
+
+import io.fabric.sdk.android.Fabric;
 import io.realm.Realm;
 import paul.by.finalproject2.R;
 import paul.by.finalproject2.ui.fragment.ParcelsFragment;
@@ -30,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         realm = Realm.getDefaultInstance();
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
 
 
@@ -58,15 +68,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
         mNavigationView.setNavigationItemSelectedListener(this);
-//        mNavigationView.getMenu().setGroupVisible(R.id.meetings_group, false);
-//        setMenuCounter(5);
     }
 
-    @Override public void onResume() {
+    @Override
+    public void onResume() {
         super.onResume();
     }
 
-    @Override public void onPause() {
+    @Override
+    public void onPause() {
         super.onPause();
     }
 
@@ -75,6 +85,65 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onDestroy();
         realm.close();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case (R.id.add_to_list_btn): {
+                showAddTrackNumberDialog();
+            }
+            break;
+
+        }
+
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void showAddTrackNumberDialog() {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        final View dialogView = this.getLayoutInflater().inflate(R.layout.custom_dialog, null);
+        dialogBuilder.setView(dialogView);
+
+        final EditText title = (EditText) dialogView.findViewById(R.id.add_new_title);
+        final EditText trackNumber = (EditText) dialogView.findViewById(R.id.add_new_track_number);
+
+        dialogBuilder.setTitle(getResources().getString(R.string.add_trackNumber_dialog_title));
+        dialogBuilder.setMessage(getResources().getString(R.string.add_trackNumber_dialog_message));
+
+        dialogBuilder.setPositiveButton(getResources().getString(R.string.add_trackNumber_dialog_done), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(MainActivity.this, "123456", Toast.LENGTH_SHORT).show();
+//                realm.beginTransaction();
+//
+//                ManagerResult result = new ManagerResult();
+//                result.setTrackNumber(trackNumber.getText().toString());
+//                result.setTitle(title.getText().toString());
+//
+//                realm.copyToRealmOrUpdate(result);
+//                realm.commitTransaction();
+            }
+        });
+
+        dialogBuilder.setNegativeButton(getResources().getString(R.string.add_trackNumber_dialog_cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
+    }
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -113,14 +182,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void setFragment(Fragment f) {
-            try {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.base_container, f);
-                fragmentTransaction.commit();
-            } catch (Exception ex) {
-                Log.e("setFragment", ex.getMessage());
-            }
+        try {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.base_container, f);
+            fragmentTransaction.commit();
+        } catch (Exception ex) {
+            Log.e("setFragment", ex.getMessage());
+        }
     }
 
 }
